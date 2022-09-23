@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center display-3 py-5">Customers</h1>
+
+        <ul class="list-group">
+          {% for customer in customers %}
+             <li class="list-group-item">
+              <a href="{% url 'customer_detail' customer.id %}">
+                <header class="d-flex justify-content-between">
+                 
+                  <h1 class="fw-bold text-success">{{customer.name}}</h1 >
+                    
+                 
+                  <p>{{customer.user.username}}</p>
+                </header>
+                
+                <p>{{customer.last_name}}</p>
+                <p>{{customer.phone}}</p>
+                <p>{{customer.address}}</p>
+
+                <p>{{customer.datecompleted|date:'M j Y:i'}}</p>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+  </div>
+</main>
+
+{% endblock %}
